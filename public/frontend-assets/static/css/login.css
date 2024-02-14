@@ -1,0 +1,282 @@
+@import url(./variables.css);
+
+/* Login Secreen */
+.login-screen {
+    padding: 100px 0;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-position: center !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+}
+.login-screen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0009109e;
+    backdrop-filter: blur(5px);
+}
+.login-screen .card {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    background: var(--light);
+    border-radius: 50px;
+    border: 7px solid var(--light);
+    overflow: hidden;
+}
+.login-screen .card .image {
+    width: 55%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.login-screen .card .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.login-screen .card .form {
+    height: 100%;
+    width: 50%;
+    background: var(--light);
+    position: relative;
+    z-index: 1;
+    border-radius: 20px;
+    padding: 30px;
+}
+.login-screen .card .form .logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+.login-screen .card .form h2 {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+.login-screen .card .form .input {
+    display: block;
+    padding: 15px 20px;
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: 1px solid #d6d6d6;
+    outline: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--dark);
+    background: var(--light-alt);
+}
+.login-screen .card .form button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 30px 15px 20px;
+    border: 0;
+    border-radius: 5px;
+    background: var(--primary);
+    color: var(--light);
+    font-size: 16px;
+    font-weight: 400;
+    margin: 20px 0;
+    cursor: pointer;
+    transition: 0.5s ease all;
+}
+.login-screen .card .form button:hover {
+    padding-right: 20px;
+}
+.login-screen .card .form p {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--dark-alt);
+    margin-top: 3px;
+}
+.login-screen .card .form p a {
+    color: var(--primary);
+    font-weight: 600;
+}
+.login-screen .card .form ul li,
+.login-screen .card .form .error li,
+.login-screen .card .form p.helper-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #d13b3b;
+}
+/* Login Screen */
+
+/* Auth Screen */
+.auth-screen {
+    padding: 100px 0;
+    position: relative;
+    min-height: 100vh;
+    overflow-y: auto;
+    background-position: center !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+}
+.auth-screen::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background: #0009109e;
+    backdrop-filter: blur(5px);
+}
+.auth-screen .card {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    background: var(--light);
+    border-radius: 20px;
+    border: 7px solid var(--light);
+    padding: 20px;
+}
+.auth-screen .card .image {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+.auth-screen .card .image img {
+    width: 130px;
+}
+.auth-screen .card .image h2 {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+.auth-screen .form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+.auth-screen .form .item {
+    width: calc(50% - 10px);
+}
+.auth-screen .form span {
+    display: block;
+    width: 100%;
+}
+.auth-screen .card .form input,
+.auth-screen .card .form select {
+    display: block;
+    padding: 15px 20px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #d6d6d6;
+    outline: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--dark);
+    background: var(--light-alt);
+}
+.auth-screen .card button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 30px 15px 20px;
+    border: 0;
+    border-radius: 5px;
+    background: var(--primary);
+    color: var(--light);
+    font-size: 16px;
+    font-weight: 400;
+    margin: 20px 0;
+    cursor: pointer;
+    transition: 0.5s ease all;
+}
+.auth-screen .card button:hover {
+    padding-right: 20px;
+}
+.auth-screen .form .item p {
+    font-size: 12px;
+    font-weight: 600;
+    color: #d13b3b;
+}
+.auth-screen .card p {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--dark-alt);
+    margin-top: 3px;
+}
+.auth-screen .card p a {
+    color: var(--primary);
+    font-weight: 600;
+}
+.auth-screen .card .helper-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+}
+.auth-screen .card .helper-text b {
+    color: #d13b3b;
+}
+/* Auth Screen */
+
+/* Responsive */
+@media (max-width: 800px) {
+    .login-screen .card {
+        flex-direction: column;
+        width: 400px;
+    }
+    .login-screen .card .image {
+        width: 100%;
+        height: 190px;
+    }
+    .login-screen .card .form {
+        width: 100%;
+        margin-top: 170px;
+    }
+    .login-screen .card .form .logo {
+        width: 100px;
+    }
+    .login-screen .card .form h2 {
+        font-size: 16px;
+    }
+}
+@media (max-width: 500px) {
+    .login-screen .card {
+        width: 320px;
+    }
+    .login-screen .card .form .input {
+        padding: 10px 15px;
+    }
+    .login-screen .card .form button {
+        padding: 10px 15px;
+    }
+    .login-screen .card .form p {
+        font-size: 12px;
+    }
+}

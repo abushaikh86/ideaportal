@@ -1,0 +1,707 @@
+@import url(./variables.css);
+
+.content-wrapper,
+.content-body {
+    min-height: calc(100vh - 160px) !important;
+}
+.table.m-0.p-0 {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#stars-container {
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    text-align: center;
+}
+
+.star {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 5px;
+    transition: color 0.3s ease-in-out;
+}
+
+.star.selected {
+    color: yellow;
+}
+
+/* Header */
+.cs-header {
+    background: var(--light);
+    box-shadow: 0 0 30px 1px #00476121;
+    z-index: 9;
+    padding: 5px 0;
+}
+.cs-header .navbar-brand {
+    opacity: 1 !important;
+    padding: 0 !important;
+}
+.cs-header .form-select {
+    width: 150px;
+}
+.cs-header .form-select option {
+    padding: 5px 10px !important;
+}
+.cs-header .dropdown .btn {
+    border-radius: 5px;
+    padding: 7px 15px;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+}
+.cs-header .avatar {
+    border-radius: 50px;
+}
+.cs-header .user-name {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+/* Navbar */
+.cs-navbar {
+    position: relative;
+    background: var(--primary);
+    box-shadow: 0 0 30px 1px #00476121;
+    z-index: 8;
+}
+.cs-navbar .navbar {
+    padding: 0;
+    min-height: auto !important;
+}
+.cs-navbar .nav-item {
+    margin: 0;
+    transition: 0.5s ease all;
+}
+.cs-navbar .nav-item:hover {
+    background: #0002 !important;
+}
+.cs-navbar .nav-item.active {
+    background: #0005 !important;
+}
+.cs-navbar .nav-link {
+    color: var(--light) !important;
+}
+.cs-navbar .status {
+    text-align: right;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--light);
+}
+.cs-navbar .status strong {
+    font-weight: 600;
+    color: var(--light);
+    text-transform: uppercase;
+}
+
+/* Footer */
+.cs-footer {
+    background: var(--dark);
+    padding: 15px 0;
+}
+.cs-footer p {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--light-alt);
+}
+.cs-footer p a {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Breadcrumb */
+.cs-breadcrumb {
+    padding: 30px 0;
+    box-shadow: 0 0 30px 1px #00476121;
+    background: url(../images/banner.jpg);
+    background-position: right bottom;
+    background-size: cover;
+}
+.cs-breadcrumb h1 {
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--light);
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+.cs-breadcrumb .breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: var(--light);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.cs-breadcrumb li a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    opacity: 2;
+}
+.cs-breadcrumb li.active {
+    color: var(--primary);
+}
+
+/* Content */
+.cs-content {
+    padding: 30px 0;
+}
+.cs-content .card .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+.cs-content .card .card-header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary);
+}
+.cs-content .card .card-header .btn-outline-primary {
+    padding: 7px 15px;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+.cs-content .card .card-header .btn-outline-primary:hover {
+    background: var(--primary);
+    color: var(--light);
+}
+.cs-content .card .card-header .btn i {
+    margin-right: 10px;
+    display: inline-block;
+}
+.cs-content .card .element-group {
+    position: absolute;
+    top: 25px;
+    right: 350px;
+}
+.cs-content .element-group .input-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 235px;
+}
+.cs-content .element-group .input-group i {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: var(--primary);
+    color: var(--light);
+    text-align: center;
+    line-height: 35px;
+    border-radius: 3px 0 0 3px;
+}
+.cs-content .element-group .input-group .form-control {
+    height: 35px;
+    width: 200px;
+    border-radius: 0 3px 3px 0;
+}
+.cs-content .card .card-body label {
+    margin-bottom: 5px;
+}
+.cs-content .card .card-body .form-select,
+.cs-content .card .card-body .form-control {
+    padding: 10px 20px;
+}
+
+/* Table */
+.cs-content .table .btn-sm {
+    padding: 10px !important;
+}
+.cs-content .table input {
+    width: 80%;
+    padding: 3px 7px;
+    border: 1px solid #c8c8c8;
+    border-radius: 5px;
+}
+.cs-content .table .idea span.sr-no {
+    display: block;
+    width: 85px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cs-content .table .idea span.id {
+    display: block;
+    width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cs-content .table .idea span.name {
+    display: block;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cs-content .table .idea span.title {
+    display: block;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cs-content .table .idea span.files {
+    display: block;
+    width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cs-content .table .idea span.submitted {
+    display: block;
+    width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cs-content .table .idea span.company {
+    display: block;
+    width: 180px;
+}
+.cs-content .table .idea span.status {
+    display: block;
+    width: 180px;
+}
+.cs-content .table .idea span.category {
+    display: block;
+    width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cs-content .table .idea .rating-cell {
+    display: block;
+    width: 120px;
+}
+.cs-content .table .idea .rating-cell .btn {
+    padding: 5px 7px !important;
+    border-radius: 5px;
+}
+.cs-content .table .idea .timeline {
+    display: block;
+    width: 300px;
+}
+.cs-content .table .idea .timeline p {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.cs-content .table .idea .timeline .group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.cs-content .table .idea .timeline .group .icon {
+    filter: grayscale(1);
+    width: 30px;
+    height: 30px;
+    opacity: 0.5;
+}
+.cs-content .table .idea .timeline .group span::after {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 1px;
+    background: var(--primary);
+    margin: 0 3px 10px;
+    opacity: 0.3;
+}
+.cs-content .table .idea .timeline .group span:last-child::after {
+    display: none;
+}
+.cs-content .table .idea .timeline .group .icon.active {
+    opacity: 1;
+    filter: grayscale(0);
+}
+.cs-content .table-responsive label {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--dark-alt);
+}
+.cs-content .table-responsive .form-control {
+    padding: 7px 15px !important;
+    box-shadow: none;
+}
+.cs-content .table-responsive table {
+    margin: 20px 0 !important;
+}
+.cs-content .dataTables_info {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--dark-alt);
+}
+.cs-content .pagination .page-link {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: none;
+}
+.cs-content .pagination .active .page-link {
+    border-color: var(--primary);
+    background: var(--primary);
+}
+.cs-content .list .item {
+    margin-bottom: 10px;
+    border: 1px solid #00476121 !important;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 20px 0 #0001;
+    padding: 15px;
+}
+.cs-content .list .item h5 {
+    color: var(--dark);
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+.cs-content .list .item p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    width: calc(100% - 80px);
+}
+.cs-content .accordion-button.collapsed {
+    background: var(--light);
+    color: var(--dark);
+}
+.cs-content .accordion-button::after {
+    filter: invert(1);
+    transition: 0.5s ease all;
+}
+.cs-content .accordion-button.collapsed::after {
+    filter: invert(0);
+}
+.cs-content .accordion-body p {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--dark-alt);
+}
+.cs-content ul.timeline > li:before {
+    left: 0;
+}
+.cs-content ul.timeline:before {
+    left: 10px;
+}
+.cs-content .idea-discussion-box h4 {
+    font-size: 14px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+.cs-content .idea-discussion-box img {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.cs-content .idea-discussion-box .feedback-text {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 10px 0 0;
+}
+
+/* Chart */
+.info-chart .head {
+    background: var(--primary);
+    padding: 15px;
+}
+.info-chart .head h6 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--light);
+    text-transform: capitalize;
+}
+.info-chart .head p {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--light);
+    text-transform: capitalize;
+    opacity: 0.8;
+}
+.info-chart .list .item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 10px 15px;
+    border: 1px solid #f1f1f1;
+    border-top: 0;
+}
+.info-chart .list .item:nth-child(odd) {
+    background: var(--light-alt);
+}
+.info-chart .list .item img {
+    width: 60px;
+    height: 60px;
+    object-position: center;
+    object-fit: cover;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.info-chart .list .item h5 span {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+    text-transform: capitalize;
+}
+.info-chart .list .item h5 i {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: capitalize;
+}
+
+/* Status Card */
+.status-card {
+    background: var(--light-alt);
+    box-shadow: none !important;
+    border: 1px solid #f4f4f4 !important;
+}
+.status-card .card-header {
+    background: var(--dark);
+}
+.status-card .card-header h5 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--light);
+}
+.status-card .card-header i {
+    padding: 7px 15px;
+    border-radius: 5px;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 600;
+}
+.status-card .card-header i.pending {
+    background: var(--pending);
+    color: var(--light);
+}
+.status-card .card-header i.assessment {
+    background: var(--assessment);
+    color: var(--light);
+}
+.status-card .card-header i.approved {
+    background: var(--approved);
+    color: var(--light);
+}
+.status-card .card-header i.implemented {
+    background: var(--implemented);
+    color: var(--light);
+}
+.status-card .card-header i.implementation {
+    background: var(--implemented);
+    color: var(--light);
+}
+.status-card form .form-control,
+.status-card form .form-select {
+    padding: 5px 10px !important;
+    font-size: 14px !important;
+}
+.status-card .time-line {
+    position: relative;
+}
+.status-card .time-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 6px;
+    width: 1px;
+    height: 100%;
+    border-right: 2px dashed var(--dark-alt);
+    opacity: 0.5;
+}
+.status-card .time-line .item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 15px;
+    position: relative;
+    z-index: 1;
+}
+.status-card .time-line .item::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: var(--light);
+    border-radius: 50px;
+    margin-top: 3px;
+    border: 3px solid var(--primary);
+}
+.status-card .time-line .item p {
+    width: calc(100% - 30px);
+    font-size: 14px;
+    font-weight: 500;
+}
+.status-card .time-line .item p span {
+    text-transform: capitalize;
+    font-weight: 600;
+    color: var(--dark);
+}
+.status-card .time-line .divider {
+    margin: 30px auto 30px 30px;
+}
+
+/* Time Line Modal */
+.timeline-modal .modal-content {
+    margin: 0 0 0 auto;
+    padding: 0;
+    position: relative;
+}
+.timeline-modal .btn-close {
+    background: var(--tertiary);
+    color: var(--light);
+    opacity: 1;
+    border: 0;
+    border-radius: 3px 0 0 3px;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    left: -40px;
+    position: absolute;
+}
+.timeline-modal .time-line {
+    position: relative;
+}
+.timeline-modal .time-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 6px;
+    width: 1px;
+    height: 100%;
+    border-right: 2px dashed var(--dark-alt);
+    opacity: 0.5;
+}
+.timeline-modal .time-line .item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 15px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 15px;
+}
+.timeline-modal .time-line .item::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: var(--light);
+    border-radius: 50px;
+    margin-top: 3px;
+    border: 3px solid var(--primary);
+}
+.timeline-modal .time-line .item p {
+    width: calc(100% - 30px);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.timeline-modal .time-line .item p b {
+    text-transform: capitalize;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+/* Like Dislike Btn */
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-top: 1px solid #00476121;
+    padding-top: 10px;
+}
+.action-btn p {
+    font-size: 14px;
+    font-weight: 600 !important;
+    color: var(--dark-alt);
+    margin-right: 15px;
+}
+.action-btn button {
+    border: 0;
+    background: transparent;
+    font-size: 20px;
+    margin-right: 10px;
+    color: #ccc;
+}
+.action-btn button.like-btn.active {
+    color: var(--secondary);
+}
+.action-btn button.dislike-btn.active {
+    color: var(--tertiary);
+}
+
+/* Upload File */
+.chat-form {
+    background: var(--light-alt);
+    border: 1px solid #00476121;
+    border-radius: 5px;
+}
+.chat-form .card-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--dark-alt);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+/* DB Card */
+.db-card .card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.db-card .text {
+    width: calc(100% - 270px);
+}
+.db-card .image {
+    width: 250px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.db-card .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}

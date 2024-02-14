@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Variables */
+:root {
+    --sans-serif: "Poppins", sans-serif;
+
+    /* --primary: #004761;
+    --secondary: #fdb115;
+    --tertiary: #f46c31; */
+    --primary: #4a6fff;
+    --secondary: #4dc87d;
+    --tertiary: #f4314c;
+    --light: #ffffff;
+    --light-alt: #f3fcff;
+    --dark: #191919;
+    --dark-alt: #707070;
+
+    --pending: var(--tertiary);
+    --assessment: var(--primary);
+    --approved: var(--secondary);
+    --implemented: #8000ff;
+
+    --shadow: 0 0 20px 1px #0002;
+}
+
+/* Default */
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+*::selection {
+    background: var(--dark);
+    color: var(--light);
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--sans-serif);
+    background: var(--light-alt);
+    overflow-x: hidden;
+    position: relative;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+b,
+i,
+u,
+ul,
+ol,
+li,
+span {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+img,
+video {
+    width: 100%;
+}
+p {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--dark-alt);
+}
+
+/* Background */
+.bg-primary {
+    background: var(--primary) !important;
+}
+.bg-secondary {
+    background: var(--secondary) !important;
+}
+.bg-tertiary {
+    background: var(--tertiary) !important;
+}
+.bg-light {
+    background: var(--light) !important;
+}
+.bg-light-alt {
+    background: var(--light-alt) !important;
+}
+.bg-dark {
+    background: var(--dark) !important;
+}
+.bg-dark-alt {
+    background: var(--dark-alt) !important;
+}
+.bg-pending {
+    background: var(--pending) !important;
+}
+.bg-assessment {
+    background: var(--assessment) !important;
+}
+.bg-approved {
+    background: var(--approved) !important;
+}
+.bg-implemented {
+    background: var(--implemented) !important;
+}
+
+/* Color */
+.text-primary {
+    color: var(--primary) !important;
+}
+.text-secondary {
+    color: var(--secondary) !important;
+}
+.text-tertiary {
+    color: var(--tertiary) !important;
+}
+.text-light {
+    color: var(--light) !important;
+}
+.text-light-alt {
+    color: var(--light-alt) !important;
+}
+.text-dark {
+    color: var(--dark) !important;
+}
+.text-dark-alt {
+    color: var(--dark-alt) !important;
+}
+.text-pending {
+    color: var(--pending) !important;
+}
+.text-assessment {
+    color: var(--assessment) !important;
+}
+.text-approved {
+    color: var(--approved) !important;
+}
+.text-implemented {
+    color: var(--implemented) !important;
+}
+
+/* Section */
+.section {
+    width: 100%;
+    position: relative;
+    background: var(--light);
+    padding: 100px 0;
+}
+
+/* Forms */
+.form-select:focus,
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgb(0 71 97 / 12%);
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+.btn-primary:hover {
+    border-color: var(--primary);
+    background: var(--dark);
+}
+.btn-secondary {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--dark);
+}
+.btn-light {
+    background: var(--light);
+    border-color: var(--light);
+}
+.btn-dark {
+    background: var(--dark);
+    border-color: var(--dark);
+}
+
+/* Card */
+.card {
+    border: 0 !important;
+    box-shadow: var(--shadow) !important;
+}
+
+/* Heading */
+.heading {
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: capitalize;
+}
+.sub-heading {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark);
+    text-transform: capitalize;
+}
