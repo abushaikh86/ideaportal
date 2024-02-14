@@ -1703,7 +1703,7 @@ class IdeaController extends Controller
 
             // for notification
             $user = Users::where('user_id', request()->receiver_id)->first();
-            $receiver_role = Rolesexternal::where(['id' =>$user->sub_role_final])->first();
+            $receiver_role = Rolesexternal::where(['id' => $user->sub_role_final])->first();
             $idea = Ideas::where('idea_id', request()->idea_id)->first();
 
             $ATuser_first_name = Auth::user()->name;
@@ -1717,10 +1717,11 @@ class IdeaController extends Controller
 
             // dd($user->email);
             // for emails
-            mailCommunication($title,$description,[],$user->email);
+            mailCommunication($title, $description, [], $user->email);
 
-          
-            return redirect()->back()->with('success', 'Comment Has Been Submitted Successfully');
+            return redirect()->route('ideas.view', ['id' => request()->idea_id, 'receiver_id' => request()->receiver_id])->with('success', 'Comment Has Been Submitted Successfully');
+
+            // return redirect()->back()->with('success', 'Comment Has Been Submitted Successfully');
         }
     }
 

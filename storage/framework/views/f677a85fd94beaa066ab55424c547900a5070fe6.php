@@ -1195,10 +1195,17 @@ $get_users = Users::whereIn('user_id', $other_users)->where('user_id', '!=', Aut
                             <option value="">Select User To Chat With</option>
                             <?php if($get_users): ?>
                             <?php $__currentLoopData = $get_users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if(request('receiver_id') && request('receiver_id') == $row->user_id): ?>
+                            <option value="<?php echo e(request('receiver_id')); ?>" selected>
+                                <?php echo e($row->name . ' ' . $row->last_name); ?>
+
+                            </option>
+                            <?php else: ?>
                             <option value="<?php echo e($row->user_id); ?>">
                                 <?php echo e($row->name . ' ' . $row->last_name); ?>
 
                             </option>
+                            <?php endif; ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endif; ?>
                         </select>
@@ -1389,7 +1396,7 @@ $get_users = Users::whereIn('user_id', $other_users)->where('user_id', '!=', Aut
         // Initial load of chat messages based on the default selected user
         var initialUserId = $('#receiver_id').val();
         var ideaId = '<?php echo e(request("id")); ?>';
-        // updateChatMessages(initialUserId, ideaId);
+        updateChatMessages(initialUserId, ideaId);
 
         // Event handler for user selection change
         $('#receiver_id').on('change', function () {

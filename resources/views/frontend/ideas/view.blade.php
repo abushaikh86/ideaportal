@@ -1198,9 +1198,15 @@ $get_users = Users::whereIn('user_id', $other_users)->where('user_id', '!=', Aut
                             <option value="">Select User To Chat With</option>
                             @if ($get_users)
                             @foreach ($get_users as $row)
+                            @if(request('receiver_id') && request('receiver_id') == $row->user_id)
+                            <option value="{{ request('receiver_id') }}" selected>
+                                {{ $row->name . ' ' . $row->last_name }}
+                            </option>
+                            @else
                             <option value="{{ $row->user_id }}">
                                 {{ $row->name . ' ' . $row->last_name }}
                             </option>
+                            @endif
                             @endforeach
                             @endif
                         </select>
@@ -1389,9 +1395,9 @@ $get_users = Users::whereIn('user_id', $other_users)->where('user_id', '!=', Aut
         }
 
         // Initial load of chat messages based on the default selected user
-        // var initialUserId = $('#receiver_id').val();
+        var initialUserId = $('#receiver_id').val();
         var ideaId = '{{ request("id") }}';
-        // updateChatMessages(initialUserId, ideaId);
+        updateChatMessages(initialUserId, ideaId);
 
         // Event handler for user selection change
         $('#receiver_id').on('change', function () {

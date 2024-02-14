@@ -1066,9 +1066,15 @@ $idea_status = IdeaStatus::where('idea_id',$idea->idea_id)->get();
                                     <option value="">Select User To Chat With</option>
                                     @if ($get_users)
                                     @foreach ($get_users as $row)
+                                    @if(request('receiver_id') && request('receiver_id') == $row->user_id)
+                                    <option value="{{ request('receiver_id') }}" selected>
+                                        {{ $row->name . ' ' . $row->last_name }}
+                                    </option>
+                                    @else
                                     <option value="{{ $row->user_id }}">
                                         {{ $row->name . ' ' . $row->last_name }}
                                     </option>
+                                    @endif
                                     @endforeach
                                     @endif
                                 </select>
