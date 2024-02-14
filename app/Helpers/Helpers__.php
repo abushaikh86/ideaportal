@@ -848,8 +848,8 @@ if (!function_exists('mailCommunication')) {
       $mail->SMTPAutoTLS = false;
       $mail->Port = 587; // port - 587/465
       $mail->Username = "ideaportal@jmbaxi.com";
-     // $mail->Password = "Zifq87GNHLz3B";
-    $mail->Password = 'hfaiylpdgtfsovag';
+      // $mail->Password = "Zifq87GNHLz3B";
+      $mail->Password = 'hfaiylpdgtfsovag';
 
       $mail->SMTPOptions = array(
         'ssl' => array(
@@ -862,75 +862,75 @@ if (!function_exists('mailCommunication')) {
       $mail->isHTML(true);
       $mail->setFrom("ideaportal@jmbaxi.com", 'Jmbaxi');
 
-    //   $cc_mail_data = FacadesDB::table('cc_emails')->where(['assign_cc' => 1])->select('*')->get();
-    //   foreach ($cc_mail_data as $data) {
-    //     $mail->addCC($data->cc_mail, 'Owner');
-    //   }
+      //   $cc_mail_data = FacadesDB::table('cc_emails')->where(['assign_cc' => 1])->select('*')->get();
+      //   foreach ($cc_mail_data as $data) {
+      //     $mail->addCC($data->cc_mail, 'Owner');
+      //   }
 
-    //   //whom to send
-    //   if (!empty($to_whom)) {
-    //     $mail->addAddress($to_whom, 'User');
-    //   }
+      //   //whom to send
+      //   if (!empty($to_whom)) {
+      //     $mail->addAddress($to_whom, 'User');
+      //   }
 
-    // //   $admin = AdminUsers::where(['role' => 1, 'account_status' => 1])->get();
-    // //   foreach ($admin as $data) {
-    // //       $mail->addAddress($data->email, 'Admin');
-    // //     }
-
-
-    // $central_ids = array();
-    // $admin = AdminUsers::where(['role' => 1, 'account_status' => 1,'centralized_decentralized_type'=>1])->get();
-    // foreach ($admin as $data) {
-    //     $central_ids[] = $data->admin_user_id;
-    //     $mail->addAddress($data->email, 'Admin');
-    //   }
+      // //   $admin = AdminUsers::where(['role' => 1, 'account_status' => 1])->get();
+      // //   foreach ($admin as $data) {
+      // //       $mail->addAddress($data->email, 'Admin');
+      // //     }
 
 
-    //   $c_admin = AdminUsers::where(['role' => 1, 'account_status' => 1, 'company_id'=>Auth::user()->company_id])->WhereNotIN('admin_user_id',$central_ids)->get();
-    // foreach ($c_admin as $data) {
-    //     $mail->addAddress($data->email, 'Admin');
-    //   }
-
-    $cc_mail_data = FacadesDB::table('cc_emails')->where(['assign_cc' => 1])->select('*')->get();
-            foreach ($cc_mail_data as $data) {
-                $mail->addCC($data->cc_mail, 'Owner');
-            }
-
-            //whom to send
-            if (!empty($to_whom)) {
-                $idea_creator = User::where('email', $to_whom)->first();
-                if ($idea_creator) {
-                    $mail->addAddress($idea_creator->email, "'" . (isset($idea_creator->name) ? $idea_creator->name : '') . ' ' . (isset($idea_creator->last_name) ? $idea_creator->last_name : '') . "'");
-                    //   $mail->addAddress($to_whom, 'User');
-                }
-            }
-
-            //   $admin = AdminUsers::where(['role' => 1, 'account_status' => 1])->get();
-            //   foreach ($admin as $data) {
-            //       $mail->addAddress($data->email, 'Admin');
-            //     }
+      // $central_ids = array();
+      // $admin = AdminUsers::where(['role' => 1, 'account_status' => 1,'centralized_decentralized_type'=>1])->get();
+      // foreach ($admin as $data) {
+      //     $central_ids[] = $data->admin_user_id;
+      //     $mail->addAddress($data->email, 'Admin');
+      //   }
 
 
-            $central_ids = array();
-            $admin = AdminUsers::where(['role' => 1, 'account_status' => 1, 'centralized_decentralized_type' => 1])->get();
-            foreach ($admin as $data) {
-                $central_ids[] = $data->admin_user_id;
-                // $mail->addAddress($data->email, 'Admin');
-                $mail->addAddress($data->email, "'" . (isset($data->first_name) ? $data->first_name : '') . ' ' . (isset($data->last_name) ? $data->last_name : '') . "'");
-            }
+      //   $c_admin = AdminUsers::where(['role' => 1, 'account_status' => 1, 'company_id'=>Auth::user()->company_id])->WhereNotIN('admin_user_id',$central_ids)->get();
+      // foreach ($c_admin as $data) {
+      //     $mail->addAddress($data->email, 'Admin');
+      //   }
+
+      $cc_mail_data = FacadesDB::table('cc_emails')->where(['assign_cc' => 1])->select('*')->get();
+      foreach ($cc_mail_data as $data) {
+        $mail->addCC($data->cc_mail, 'Owner');
+      }
+
+      //whom to send
+      if (!empty($to_whom)) {
+        $idea_creator = User::where('email', $to_whom)->first();
+        if ($idea_creator) {
+          $mail->addAddress($idea_creator->email, "'" . (isset($idea_creator->name) ? $idea_creator->name : '') . ' ' . (isset($idea_creator->last_name) ? $idea_creator->last_name : '') . "'");
+          //   $mail->addAddress($to_whom, 'User');
+        }
+      }
+
+      //   $admin = AdminUsers::where(['role' => 1, 'account_status' => 1])->get();
+      //   foreach ($admin as $data) {
+      //       $mail->addAddress($data->email, 'Admin');
+      //     }
 
 
-            $c_admin = AdminUsers::where(['role' => 1, 'account_status' => 1, 'company_id' => Auth::user()->company_id])->WhereNotIN('admin_user_id', $central_ids)->get();
-            foreach ($c_admin as $data) {
-                // $mail->addAddress($data->email, 'Admin');
-                $mail->addAddress($data->email, "'" . (isset($data->first_name) ? $data->first_name : '') . ' ' . (isset($data->last_name) ? $data->last_name : '') . "'");
-            }
+      $central_ids = array();
+      $admin = AdminUsers::where(['role' => 1, 'account_status' => 1, 'centralized_decentralized_type' => 1])->get();
+      foreach ($admin as $data) {
+        $central_ids[] = $data->admin_user_id;
+        // $mail->addAddress($data->email, 'Admin');
+        $mail->addAddress($data->email, "'" . (isset($data->first_name) ? $data->first_name : '') . ' ' . (isset($data->last_name) ? $data->last_name : '') . "'");
+      }
+
+
+      $c_admin = AdminUsers::where(['role' => 1, 'account_status' => 1, 'company_id' => Auth::user()->company_id])->WhereNotIN('admin_user_id', $central_ids)->get();
+      foreach ($c_admin as $data) {
+        // $mail->addAddress($data->email, 'Admin');
+        $mail->addAddress($data->email, "'" . (isset($data->first_name) ? $data->first_name : '') . ' ' . (isset($data->last_name) ? $data->last_name : '') . "'");
+      }
       $mail->Subject = $subject;
       $mail->Body = $body;
       $mail->Send();
-    return 1;
+      return 1;
     } catch (Exception $e) {
-        //dd($e);
+      //dd($e);
     }
   }
   // return 1;
@@ -940,146 +940,144 @@ if (!function_exists('mailCommunication')) {
 //@Naresh D On May 26, 2023
 //mail --change when live
 if (!function_exists('mailCommunication_multple')) {
-    function mailCommunication_multple($subject, $body, $to_whom)
-    {
+  function mailCommunication_multple($subject, $body, $to_whom)
+  {
 
-      try {
-        $mail = new PHPMailer\PHPMailer(true);
-        $mail->IsSMTP();
-        // $mail->IsMail();
-        $mail->CharSet = "utf-8"; // set charset to utf8
-        //for local start
-        //for local end
+    try {
+      $mail = new PHPMailer\PHPMailer(true);
+      $mail->IsSMTP();
+      // $mail->IsMail();
+      $mail->CharSet = "utf-8"; // set charset to utf8
+      //for local start
+      //for local end
 
-        $mail->SMTPAuth = true; // authentication enabled
-        $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
-        $mail->Host = "smtp.gmail.com";
-        $mail->SMTPAutoTLS = false;
-        $mail->Port = 587; // port - 587/465
-        $mail->Username = "ideaportal@jmbaxi.com";
-     //   $mail->Password = "Zifq87GNHLz3B";
-$mail->Password = 'hfaiylpdgtfsovag';
+      $mail->SMTPAuth = true; // authentication enabled
+      $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
+      $mail->Host = "smtp.gmail.com";
+      $mail->SMTPAutoTLS = false;
+      $mail->Port = 587; // port - 587/465
+      $mail->Username = "ideaportal@jmbaxi.com";
+      //   $mail->Password = "Zifq87GNHLz3B";
+      $mail->Password = 'hfaiylpdgtfsovag';
 
-        $mail->SMTPOptions = array(
-          'ssl' => array(
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-            'allow_self_signed' => true
-          )
-        );
+      $mail->SMTPOptions = array(
+        'ssl' => array(
+          'verify_peer' => false,
+          'verify_peer_name' => false,
+          'allow_self_signed' => true
+        )
+      );
 
-        $mail->isHTML(true);
-        $mail->setFrom("ideaportal@jmbaxi.com", 'Jmbaxi');
+      $mail->isHTML(true);
+      $mail->setFrom("ideaportal@jmbaxi.com", 'Jmbaxi');
 
-        // $cc_mail_data = FacadesDB::table('cc_emails')->where(['assign_cc' => 1])->select('*')->get();
-        // foreach ($cc_mail_data as $data) {
-        //   $mail->addCC($data->cc_mail, 'Owner');
-        // }
+      // $cc_mail_data = FacadesDB::table('cc_emails')->where(['assign_cc' => 1])->select('*')->get();
+      // foreach ($cc_mail_data as $data) {
+      //   $mail->addCC($data->cc_mail, 'Owner');
+      // }
 
-        // //whom to send
-        // // if (!empty($to_whom)) {
-        // //   $mail->addAddress($to_whom, 'User');
-        // // }
+      // //whom to send
+      // // if (!empty($to_whom)) {
+      // //   $mail->addAddress($to_whom, 'User');
+      // // }
 
-        // if(isset($to_whom) && count($to_whom) > 0){
-        //     foreach($to_whom as $to_send){
-        //         $mail->addAddress($to_send, 'User');
-        //     }
-        // }
+      // if(isset($to_whom) && count($to_whom) > 0){
+      //     foreach($to_whom as $to_send){
+      //         $mail->addAddress($to_send, 'User');
+      //     }
+      // }
 
-        // $central_ids = array();
-        // $admin = AdminUsers::where(['role' => 1, 'account_status' => 1,'centralized_decentralized_type'=>1])->get();
-        // foreach ($admin as $data) {
-        //     $central_ids[] = $data->admin_user_id;
-        //     $mail->addAddress($data->email, 'Admin');
+      // $central_ids = array();
+      // $admin = AdminUsers::where(['role' => 1, 'account_status' => 1,'centralized_decentralized_type'=>1])->get();
+      // foreach ($admin as $data) {
+      //     $central_ids[] = $data->admin_user_id;
+      //     $mail->addAddress($data->email, 'Admin');
 
-        //   }
+      //   }
 
-        //   $c_admin = AdminUsers::where(['role' => 1, 'account_status' => 1, 'company_id'=>Auth::user()->company_id])->WhereNotIN('admin_user_id',$central_ids)->get();
-        // foreach ($c_admin as $data) {
-        //     $mail->addAddress($data->email, 'Admin');
-        //   }
-        $cc_mail_data = FacadesDB::table('cc_emails')->where(['assign_cc' => 1])->select('*')->get();
-            foreach ($cc_mail_data as $data) {
+      //   $c_admin = AdminUsers::where(['role' => 1, 'account_status' => 1, 'company_id'=>Auth::user()->company_id])->WhereNotIN('admin_user_id',$central_ids)->get();
+      // foreach ($c_admin as $data) {
+      //     $mail->addAddress($data->email, 'Admin');
+      //   }
+      $cc_mail_data = FacadesDB::table('cc_emails')->where(['assign_cc' => 1])->select('*')->get();
+      foreach ($cc_mail_data as $data) {
 
-                $cc_admin_user = AdminUsers::where('admin_user_id', $data->admin_user_id)->first();
-                if ($cc_admin_user) {
-                    $mail->addCC($cc_admin_user->email, "(" . (isset($cc_admin_user->first_name) ? $cc_admin_user->first_name : '') . ' ' . (isset($cc_admin_user->last_name) ? $cc_admin_user->last_name : ''));
-                }
-                // $mail->addCC($data->cc_mail, 'Owner');
-            }
-
-            //whom to send
-            // if (!empty($to_whom)) {
-            //   $mail->addAddress($to_whom, 'User');
-            // }
-
-            if (isset($to_whom) && count($to_whom) > 0) {
-                foreach ($to_whom as $to_send) {
-                    $idea_creator = User::where('email', $to_send)->first();
-                    if ($idea_creator) {
-                        $mail->addAddress($idea_creator->email, "'" . (isset($idea_creator->name) ? $idea_creator->name : '') . ' ' . (isset($idea_creator->last_name) ? $idea_creator->last_name : '') . "'");
-                    }
-                    // $mail->addAddress($to_send, 'User');
-                }
-            }
-
-            $central_ids = array();
-            $admin = AdminUsers::where(['role' => 1, 'account_status' => 1, 'centralized_decentralized_type' => 1])->get();
-            foreach ($admin as $data) {
-                $central_ids[] = $data->admin_user_id;
-                $mail->addAddress($data->email, "'" . (isset($data->first_name) ? $data->first_name : '') . ' ' . (isset($data->last_name) ? $data->last_name : '') . "'");
-               // $mail->addAddress($data->email, 'Admin');
-            }
-
-            $c_admin = AdminUsers::where(['role' => 1, 'account_status' => 1, 'company_id' => Auth::user()->company_id])->WhereNotIN('admin_user_id', $central_ids)->get();
-            foreach ($c_admin as $data) {
-                $mail->addAddress($data->email, "'" . (isset($data->first_name) ? $data->first_name : '') . ' ' . (isset($data->last_name) ? $data->last_name : '') . "'");
-               // $mail->addAddress($data->email, 'Admin');
-            }
-
-
-
-        $mail->Subject = $subject;
-        $mail->Body = $body;
-        // dd($mail);
-       $mail->Send();
-      return 1;
-      } catch (Exception $e) {
-        dd($e);
+        $cc_admin_user = AdminUsers::where('admin_user_id', $data->admin_user_id)->first();
+        if ($cc_admin_user) {
+          $mail->addCC($cc_admin_user->email, "(" . (isset($cc_admin_user->first_name) ? $cc_admin_user->first_name : '') . ' ' . (isset($cc_admin_user->last_name) ? $cc_admin_user->last_name : ''));
+        }
+        // $mail->addCC($data->cc_mail, 'Owner');
       }
+
+      //whom to send
+      // if (!empty($to_whom)) {
+      //   $mail->addAddress($to_whom, 'User');
+      // }
+
+      if (isset($to_whom) && count($to_whom) > 0) {
+        foreach ($to_whom as $to_send) {
+          $idea_creator = User::where('email', $to_send)->first();
+          if ($idea_creator) {
+            $mail->addAddress($idea_creator->email, "'" . (isset($idea_creator->name) ? $idea_creator->name : '') . ' ' . (isset($idea_creator->last_name) ? $idea_creator->last_name : '') . "'");
+          }
+          // $mail->addAddress($to_send, 'User');
+        }
+      }
+
+      $central_ids = array();
+      $admin = AdminUsers::where(['role' => 1, 'account_status' => 1, 'centralized_decentralized_type' => 1])->get();
+      foreach ($admin as $data) {
+        $central_ids[] = $data->admin_user_id;
+        $mail->addAddress($data->email, "'" . (isset($data->first_name) ? $data->first_name : '') . ' ' . (isset($data->last_name) ? $data->last_name : '') . "'");
+        // $mail->addAddress($data->email, 'Admin');
+      }
+
+      $c_admin = AdminUsers::where(['role' => 1, 'account_status' => 1, 'company_id' => Auth::user()->company_id])->WhereNotIN('admin_user_id', $central_ids)->get();
+      foreach ($c_admin as $data) {
+        $mail->addAddress($data->email, "'" . (isset($data->first_name) ? $data->first_name : '') . ' ' . (isset($data->last_name) ? $data->last_name : '') . "'");
+        // $mail->addAddress($data->email, 'Admin');
+      }
+
+
+
+      $mail->Subject = $subject;
+      $mail->Body = $body;
+      // dd($mail);
+      $mail->Send();
+      return 1;
+    } catch (Exception $e) {
+      dd($e);
     }
-    // return 1;
-  }   //mail HElper END
+  }
+  // return 1;
+}   //mail HElper END
 
 if (!function_exists('send_backned_notification')) {
-  function send_backned_notification($idea_uni_id, $title, $description,$user_id)
+  function send_backned_notification($idea_uni_id, $title, $description, $user_id)
   {
     $data = AdminUsers::get();
     // dd($data->toArray());
     foreach ($data as $row) {
-        $notification = new AdminNotification();
-        $notification->user_id = $user_id;
-        $notification->idea_uni_id = $idea_uni_id;
-        $notification->title = $title;
-        $notification->description = $description;
-        $notification->receiver_id = $row->admin_user_id;
-        $notification->save();
+      $notification = new AdminNotification();
+      $notification->user_id = $user_id;
+      $notification->idea_uni_id = $idea_uni_id;
+      $notification->title = $title;
+      $notification->description = $description;
+      $notification->receiver_id = $row->admin_user_id;
+      $notification->save();
     }
   }
 }
 
 if (!function_exists('send_frontend_notification')) {
-  function send_frontend_notification($idea_uni_id, $title, $description,$receiver_id,$role)
+  function send_frontend_notification($idea_uni_id, $title, $description, $receiver_id, $role)
   {
-      $notification = new Notification();
-      $notification->idea_uni_id = $idea_uni_id;
-      $notification->title = $title;
-      $notification->description = $description;
-      $notification->receiver_id = $receiver_id;
-      $notification->role = $role;
-      $notification->save();
+    $notification = new Notification();
+    $notification->idea_uni_id = $idea_uni_id;
+    $notification->title = $title;
+    $notification->description = $description;
+    $notification->receiver_id = $receiver_id;
+    $notification->role = $role;
+    $notification->save();
   }
 }
-
-

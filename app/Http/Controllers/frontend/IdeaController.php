@@ -1077,7 +1077,7 @@ class IdeaController extends Controller
 
         // $idea_active_status = IdeaActiveStatus::where('assessment_team', 1)->pluck('idea_active_status', 'idea_active_status_value');
         $idea_active_status = IdeaActiveStatus::where('assessment_team', 1)->whereIn('idea_active_status_value', $status_data)->pluck('idea_active_status', 'idea_active_status_value');
-        $journey_assesment = IdeaJourney::where(['final_role_id'=>$roles_external->id,'idea_id'=> $id])->first();
+        $journey_assesment = IdeaJourney::where(['final_role_id' => $roles_external->id, 'idea_id' => $id])->first();
         // dd($roles_external->id);
         return view('frontend.ideas.view', ['idea' => Ideas::where('idea_id', $id)->first(), 'idea_active_status' => $idea_active_status, 'journey_assesment' => $journey_assesment, 'show_mode' => $view_mode, 'sla' => $assessment_SLA]);
     }
@@ -1701,31 +1701,25 @@ class IdeaController extends Controller
 
         if ($feedback->save()) {
 
+            // for notification
+            $user = Users::where('user_id', request()->receiver_id)->first();
+            $receiver_role = Rolesexternal::where(['id' =>$user->sub_role_final])->first();
             $idea = Ideas::where('idea_id', request()->idea_id)->first();
-            $idea_uni_id = $idea->idea_uni_id;
-            $idea_title = $idea->title;
 
             $ATuser_first_name = Auth::user()->name;
             $ATuser_last_name = Auth::user()->last_name;
-            $role = Auth::user()->role;
+            $role = $receiver_role->role_type;
+            $title = "Comment Has Been Posted By  " . $ATuser_first_name . ' ' . $ATuser_last_name . ' (' . $role . ')';
+            $description = "Idea Title : " . $idea->title . " <br> Comment : " . request()->feedback;
 
-            if ($idea) {
-                if ($role != 'User') {
-                    $notification = new Notification();
-                    $notification->idea_uni_id = $idea_uni_id;
-                    $notification->title = "Comment Has Been Posted By  " . $ATuser_first_name . ' ' . $ATuser_last_name . ' (' . $role . ')';
-                    $notification->description = "Idea Title : " . $idea_title . " <br> Comment : " . request()->feedback;
-                    $notification->receiver_id = $idea['user_id'];
-                    // $notification->role = $roles->role_type;
-                    $notification->save();
+            send_frontend_notification($idea->idea_uni_id, $title, $description, request()->receiver_id, $role);
+            send_backned_notification($idea->idea_uni_id, $title, $description, Auth::id());
 
+            // dd($user->email);
+            // for emails
+            mailCommunication($title,$description,[],$user->email);
 
-                    $idea_uni_id = $idea_uni_id;
-                    $title = "Comment Has Been Posted By  " . $ATuser_first_name . ' ' . $ATuser_last_name . ' (' . $role . ')';
-                    $description = "Idea Title : " . $idea_title . " <br> Comment : " . request()->feedback;
-                    send_backned_notification($idea_uni_id, $title, $description, Auth::id());
-                }
-            }
+          
             return redirect()->back()->with('success', 'Comment Has Been Submitted Successfully');
         }
     }
@@ -3119,10 +3113,10 @@ class IdeaController extends Controller
     {
         //     $idea = new IdeaJourney();
         $user = Users::where('user_id', Auth::user()->user_id)->first();
-      
+
         $user_role_final = (isset($user->sub_role_final) ? $user->sub_role_final : 0);
 
-        $journey = IdeaJourney::where(['idea_id'=>$request->idea_id,'user_id' => $request->user_id,'final_role_id'=>$user_role_final])->first();
+        $journey = IdeaJourney::where(['idea_id' => $request->idea_id, 'user_id' => $request->user_id, 'final_role_id' => $user_role_final])->first();
         if (!$journey) {
             $journey = new IdeaJourney();
         }

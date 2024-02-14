@@ -1389,7 +1389,7 @@ $get_users = Users::whereIn('user_id', $other_users)->where('user_id', '!=', Aut
         }
 
         // Initial load of chat messages based on the default selected user
-        var initialUserId = $('#receiver_id').val();
+        // var initialUserId = $('#receiver_id').val();
         var ideaId = '{{ request("id") }}';
         // updateChatMessages(initialUserId, ideaId);
 
